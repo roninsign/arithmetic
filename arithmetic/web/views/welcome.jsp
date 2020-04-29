@@ -7,15 +7,24 @@
 
     <style type="text/css">
         body{
-            background-image: url("image/ti432mg.png");
+            background-image: url("image/3.png");
             background-size: cover;
         }
     </style>
 </head>
 <body>
-
+<form  action="${pageContext.request.contextPath}/user?state=logout" method="post">
+    <div style="margin-top: 30px;margin-right: 65%">
+        <c:if test="${language==1}">
+            <input type="submit" value="退出登录" style="width: 200px;height:45px">
+        </c:if>
+        <c:if test="${language==2}">
+            <input type="submit" value="Log out" style="width: 200px;height:45px">
+        </c:if>
+    </div>
+</form>
 <form  action="${pageContext.request.contextPath}/user?state=all" method="post">
-    <div style="margin-top: 50px;margin-left: 65%">
+    <div style="margin-top: 50px;margin-right: 65%">
         <c:if test="${language==1}">
             <input type="submit" value="查看个人历史成绩" style="width: 200px;height:45px">
         </c:if>
@@ -26,7 +35,7 @@
 </form>
 
 <form  action="${pageContext.request.contextPath}/user?state=allUser" method="post">
-    <div style="margin-top: 30px;margin-left: 65%">
+    <div style="margin-top: 30px;margin-right: 65%">
         <c:if test="${language==1}">
             <input type="submit" value="查看全部用户成绩" style="width: 200px;height:45px">
         </c:if>
@@ -35,25 +44,15 @@
         </c:if>
     </div>
 </form>
-<form  action="${pageContext.request.contextPath}/user?state=logout" method="post">
-    <div style="margin-top: 30px;margin-left: 65%">
-        <c:if test="${language==1}">
-            <input type="submit" value="退出登录" style="width: 200px;height:45px">
-        </c:if>
-        <c:if test="${language==2}">
-            <input type="submit" value="Log out" style="width: 200px;height:45px">
-        </c:if>
-    </div>
-</form>
+
 <div style="margin-top: 30px;margin-left: 300px">
     <c:if test="${language==1}">
-        <a href="${pageContext.request.contextPath}/Algo?state=Algo1" ><button><font size="4" >题目生成</font></button> </a>
+        <a href="${pageContext.request.contextPath}/Algo?state=Algo1" ><button style="position:relative;left:100px; bottom: 60px"><font size="4" >生成题目</font></button> </a>
         <br><br>
-        <font size="5" ><strong>OR</strong></font><br><br>
         <table border="1" >
             <tr>
                 <td>
-                    <font size="4" >上传文件</font>
+                    <font size="4" >上传包含题目的文件</font>
                 </td>
                 <td>
                     <form action="${pageContext.request.contextPath}/upTitle?state=up" enctype="multipart/form-data" method="post">

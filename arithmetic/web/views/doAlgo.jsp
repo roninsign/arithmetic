@@ -60,7 +60,24 @@
             <div id="1" style="display:inline-block;margin-left: 20px;margin-top: 20px; vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${status.index<=(count/2)}">
+                        <c:if test="${status.index<=(count/3)}">
+                            <tr>
+                                <td>
+                                        ${status.index+1}
+                                </td>
+                                <td>
+                                        ${algo}= <input type="text" value="" name="${status.index+1}.2" style="width:50px;" required="required" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+                                </td>
+                                <td hidden><input type="text" value="${algo}" name="${status.index+1}.1" style="width:50px;" ></td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                </table>
+            </div>
+            <div id="1" style="display:inline-block;margin-left: 20px;margin-top: 20px; vertical-align: top">
+                <table border="1" style="text-align: right">
+                    <c:forEach items="${list}"  var="algo" varStatus="status">
+                        <c:if test="${status.index>(count/3)&&status.index<=(2*count/3)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -78,7 +95,7 @@
                 <table border="1" style="text-align: right">
 
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${status.index>(count/2)}">
+                        <c:if test="${status.index>(2*count/3)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -180,7 +197,7 @@
             <div id="1" style="display:inline-block;margin-left: 20px;margin-top: 20px;vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${status.index<=(count/4)}">
+                        <c:if test="${status.index<=(count/6)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -198,7 +215,7 @@
                 <table border="1"  style="text-align: right">
 
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index<=(count/4)*2)&&status.index>(count/4)}">
+                        <c:if test="${(status.index<=(count/6)*2)&&status.index>(count/6)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -216,7 +233,41 @@
             <div id="3" style="display:inline-block;margin-left: 20px;margin-top: 20px; vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index>(count/4)*2)&&status.index<(count/4)*3}">
+                        <c:if test="${(status.index>(count/6)*2)&&status.index<(count/6)*3}">
+                            <tr>
+                                <td>
+                                        ${status.index+1}
+                                </td>
+                                <td>
+                                        ${algo}= <input type="text" value="" name="${status.index+1}.2" style="width:50px;" required="required" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+                                </td>
+                                <td hidden><input type="text" value="${algo}" name="${status.index+1}.1" style="width:50px;" ></td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                </table>
+            </div>
+            <div id="3" style="display:inline-block;margin-left: 20px;margin-top: 20px; vertical-align: top">
+                <table border="1" style="text-align: right">
+                    <c:forEach items="${list}"  var="algo" varStatus="status">
+                        <c:if test="${(status.index>(count/6)*3)&&status.index<(count/6)*4}">
+                            <tr>
+                                <td>
+                                        ${status.index+1}
+                                </td>
+                                <td>
+                                        ${algo}= <input type="text" value="" name="${status.index+1}.2" style="width:50px;" required="required" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+                                </td>
+                                <td hidden><input type="text" value="${algo}" name="${status.index+1}.1" style="width:50px;" ></td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                </table>
+            </div>
+            <div id="3" style="display:inline-block;margin-left: 20px;margin-top: 20px; vertical-align: top">
+                <table border="1" style="text-align: right">
+                    <c:forEach items="${list}"  var="algo" varStatus="status">
+                        <c:if test="${(status.index>(count/6)*4)&&status.index<(count/6)*5}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -233,7 +284,7 @@
             <div id="4" style="display:inline-block;margin-left: 20px;margin-top: 20px;vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index>(count/4)*3)}">
+                        <c:if test="${(status.index>(count/6)*5)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -266,7 +317,7 @@
             <div id="1" style="display:inline-block;margin-left: 20px;margin-top: 20px;vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${status.index<=(count/5)}">
+                        <c:if test="${status.index<=(count/6)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -284,7 +335,7 @@
                 <table border="1" style="text-align: right" >
 
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index<=(count/5)*2)&&status.index>(count/5)}">
+                        <c:if test="${(status.index<=(count/6)*2)&&status.index>(count/6)}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -302,7 +353,7 @@
             <div id="3" style="display:inline-block;margin-left: 20px;margin-top: 20px;vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index>(count/5)*2)&&status.index<(count/5)*3}">
+                        <c:if test="${(status.index>(count/6)*2)&&status.index<(count/6)*3}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -319,7 +370,7 @@
             <div id="4" style="display:inline-block;margin-left: 20px;margin-top: 20px;vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index>(count/5)*3)&&status.index<(count/5)*4}">
+                        <c:if test="${(status.index>(count/6)*3)&&status.index<(count/6)*4}">
                             <tr>
                                 <td>
                                         ${status.index+1}
@@ -333,10 +384,27 @@
                     </c:forEach>
                 </table>
             </div>
-            <div id="4" style="float: left;margin-left: 20px;margin-top: 20px;vertical-align: top">
+            <div id="5" style="display:inline-block;margin-left: 20px;margin-top: 20px;vertical-align: top">
                 <table border="1" style="text-align: right">
                     <c:forEach items="${list}"  var="algo" varStatus="status">
-                        <c:if test="${(status.index>(count/5)*4)}">
+                        <c:if test="${(status.index>(count/6)*4)&&status.index<(count/6)*5}">
+                            <tr>
+                                <td>
+                                        ${status.index+1}
+                                </td>
+                                <td>
+                                        ${algo}= <input type="text" value="" name="${status.index+1}.2" style="width:50px;" required="required" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">
+                                </td>
+                                <td hidden><input type="text" value="${algo}" name="${status.index+1}.1" style="width:50px;" ></td>
+                            </tr>
+                        </c:if>
+                    </c:forEach>
+                </table>
+            </div>
+            <div id="6" style="display:inline-block; margin-left: 20px;margin-top: 20px;vertical-align: top">
+                <table border="1" style="text-align: right">
+                    <c:forEach items="${list}"  var="algo" varStatus="status">
+                        <c:if test="${(status.index>(count/6)*5)}">
                             <tr>
                                 <td>
                                         ${status.index+1}

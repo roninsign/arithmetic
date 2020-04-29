@@ -1,6 +1,8 @@
 package com.dao;
 
 
+import javax.script.ScriptException;
+
 public interface Algorithm {
 
 
@@ -15,7 +17,7 @@ public interface Algorithm {
      * @param c
      * @return
      */
-    public  String algorithm(int m1, int m2, int o, int c);
+    public  String algorithm(int m1, int m2, int o, int c) throws ScriptException;
 
 
     /**
@@ -28,7 +30,7 @@ public interface Algorithm {
      * @param c
      * @return
      */
-    public  String BracketsAlgo(int m1, int m2, int o, int c);
+    public  String BracketsAlgo(int m1, int m2, int o, int c) throws ScriptException;
 
 
     /**

@@ -5,14 +5,14 @@
     <title>生成题目</title>
     <style type="text/css">
         body{
-            background-image: url("image/tim77777g.jpg");
+            background-image: url("image/5.jpg");
             background-size: cover;
         }
     </style>
 </head>
 <body>
 <form  action="${pageContext.request.contextPath}/Algo?state=return" method="post">
-    <div style="margin-top: 50px;margin-left: 80%">
+    <div style="margin-top: 50px;margin-right: 80%">
         <c:if test="${language==1}">
             <input type="submit" value="返回页面" style="width: 100px;height:45px">
         </c:if>
@@ -22,34 +22,41 @@
     </div>
 </form>
 <%--中文--%>
-<div style="margin-left: 100px;margin-top: 50px">
+<div style="margin-left: 40%;margin-top: 50px">
     <c:if test="${language==1}">
         <form  action="${pageContext.request.contextPath}/Algo?state=AlgoTest" method="post" >
-            <font color="red">*</font>生成的题目数：<input type="text" name="n" style="height:35px;width:60px;margin-top:25px" required="required" placeholder="1-10000" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"> <br>
+            <font color="red">*</font>生成的题目数：<input type="text" name="n" style="height:35px;width:60px;margin-top:25px" value="${condition.n[0]}" required="required" placeholder="1-10000" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"> <br>
             <font color="red">*</font>
-            题目的上下限：<input type="text" name="m1" style="height:35px;width:60px;margin-top:25px" required="required" placeholder="1-100" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">——<input type="text" name="m2" style="height:35px;width:60px;margin-top:25px" required="required" placeholder="50-1000" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"><br>
+            题目的上下限：<input type="text" name="m1" style="height:35px;width:60px;margin-top:25px" value="${condition.m1[0]}" required="required" placeholder="0-100" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();">——<input type="text" name="m2" value="${condition.m2[0]}" style="height:35px;width:60px;margin-top:25px" required="required" placeholder="50-1000" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"><br>
             符号的数量：<select style="height:20px;width:50px;margin-top:25px" name="o">
             <option value="1" selected="selected">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+            <option value="2" <c:if test="${condition.o[0]==2}"> selected="selected"</c:if>>2</option>
+            <option value="3" <c:if test="${condition.o[0]==3}">selected="selected"</c:if>>3</option>
+            <option value="4" <c:if test="${condition.o[0]==4}">selected="selected"</c:if>>4</option>
+            <option value="5" <c:if test="${condition.o[0]==5}">selected="selected"</c:if>>5</option>
+            <option value="6" <c:if test="${condition.o[0]==6}">selected="selected"</c:if>>6</option>
+            <option value="7" <c:if test="${condition.o[0]==7}">selected="selected"</c:if>>7</option>
+            <option value="8" <c:if test="${condition.o[0]==8}">selected="selected"</c:if>>8</option>
+            <option value="9" <c:if test="${condition.o[0]==9}">selected="selected"</c:if>>9</option>
+            <option value="10" <c:if test="${condition.o[0]==9}">selected="selected"</c:if>>10</option>
         </select><br><br>
             是否有乘除法：
-            否<input type="radio" name="c" value="2"checked="checked"/>
-            是<input type="radio" name="c" value="1" /><br><br>
+            否<input type="radio" name="c" value="1"checked="checked"/>
+            是<input type="radio" name="c" value="2" /><br><br>
             是否含有括号：
             否<input type="radio" name="b" value="2"  checked="checked"  />
             是<input type="radio" name="b" value="1"/><br><br>
             <font color="red" size="2">（*为必填，且为正整数）</font><br>
             <input type="submit" value="生成题目" style="width:100px;height:35px;margin-top:25px"><br><br>
-                ${msg}
+
         </form>
+        <form  action="${pageContext.request.contextPath}/Algo?state=startDo" method="post">
+            <input type="text" name="filename" value="${filename}" hidden>
+            <c:if test="${not empty filename}">
+                <button style="width:100px;height:35px;margin-top:5px">开始做题</button>
+            </c:if>
+        </form>
+        ${msg}
         <form  action="${pageContext.request.contextPath}/Algo?state=downFile" method="post">
             <input type="text" name="filename" value="${filename}" hidden>
             <c:if test="${not empty filename}">

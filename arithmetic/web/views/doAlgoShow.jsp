@@ -3,10 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>成功上传文件</title>
+    <title>开始做题</title>
     <style type="text/css">
         body{
-            background-image: url("image/tii55mg.jpeg");
+            background-image: url("image/4.jpeg");
             background-size: cover;
         }
     </style>
@@ -34,13 +34,14 @@
                 <input type="submit" value="show all">
             </c:if>
         </form>
+
         <%--中文--%>
         <c:if test="${language==1}">
-            已成功上传文件，点击做题即开始计时
+            点击做题即开始计时
         </c:if>
         <%--英文--%>
         <c:if test="${language==2}">
-            The file has been uploaded successfully. Click to start the timer.
+             Click to start the timer.
         </c:if>
     </div>
 </center>

@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 @WebServlet(name = "AlgorithmServlet",urlPatterns = "/Algo",asyncSupported = true)
 public class AlgorithmServlet extends HttpServlet {
@@ -59,9 +62,15 @@ public class AlgorithmServlet extends HttpServlet {
             RequestDispatcher rd = null;
             rd = request.getRequestDispatcher(WebContents.WELCOME);
             rd.forward(request, response);
+        }else if(state.equals("startDo")){
+            //开始做题
+            request.getRequestDispatcher(WebContents.STARTDO).forward(request,response);
         }
         else {
             try {
+
+                Map<String, String[]> condition = request.getParameterMap();
+                request.getSession().setAttribute("condition",condition);
                 /*题目生成*/
                 algoTest(request, response);
             } catch (Exception e) {
@@ -112,17 +121,25 @@ public class AlgorithmServlet extends HttpServlet {
             String fileName =   UUID.randomUUID() + "result.txt";
             FileWriter fileWriter = new FileWriter(ctxPath+fileName,true);
             PrintWriter out = response.getWriter();
+            List<String> list = new ArrayList<>();
+            int count=0;
             for (int i = n; i > 0; i--) {
                 String str = null;
                 if (b1==1){//是否有括号，b=1,you;b=2，不包含。
                     //如果包含乘除，c=1;如果不包含 c=2；
                     if (o==1){ //一位运算符，没有括号
                         str= algorithm.algorithm(m1, m2, o, c);
+                        list.add(str);
+                        count++;
                     }else {
                         str= algorithm.BracketsAlgo(m1, m2, o, c);
+                        list.add(str);
+                        count++;
                     }
                 }else {
                     str= algorithm.algorithm(m1, m2, o, c);
+                    list.add(str);
+                    count++;
                 }
                 fileWriter.write("\r\n"+str);
             }
@@ -131,6 +148,8 @@ public class AlgorithmServlet extends HttpServlet {
             String language= (String) session.getAttribute("language");
             System.out.println(fileName);
             rd = request.getRequestDispatcher(WebContents.Algorithm);
+            request.getSession().setAttribute("list",list);
+            request.getSession().setAttribute("count",count);
             request.setAttribute("msg", "文件创建成功，下载请点击！！！");
             request.setAttribute("msg1", "File creation success, download please click.！！！");
             request.setAttribute("filename",fileName);

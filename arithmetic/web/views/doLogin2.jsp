@@ -3,10 +3,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>做题。一次出一道题</title>
+    <title>做题,一次出一道题</title>
     <style type="text/css">
         body{
-            background-image: url("image/ti432mg.png");
+            background-image: url("image/3.png");
             background-size: cover;
         }
         .font{font-size:30px}

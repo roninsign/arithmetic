@@ -6,7 +6,7 @@
     <title>成功上传文件</title>
     <style type="text/css">
         body{
-            background-image: url("image/tii55mg.jpeg");
+            background-image: url("image/4.jpeg");
             background-size: cover;
         }
     </style>

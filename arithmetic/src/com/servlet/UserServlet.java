@@ -39,6 +39,22 @@ public class UserServlet extends HttpServlet {
 //        PrintWriter out = response.getWriter();   //服务器向客户端反馈的时候需要用流向客户端输出数据
         String state = request.getParameter("state");  //获取jsp页面发生的事件
         if (state.equals("login")){
+            //获取数据
+            String verifycode = request.getParameter("verifycode");
+            //验证码效验
+            int flag=0;//拦截器验证是否登录
+            String checkcode_server=(String)request.getSession().getAttribute("CHECKCODE_SERVER");
+
+                if(!checkcode_server.equalsIgnoreCase(verifycode)){
+
+                //提示信息
+                request.setAttribute("login_msg","验证码错误！");
+                //跳转登录页面
+                request.getRequestDispatcher(WebContents.LOGIN).forward(request,response);
+                return;
+                }
+            flag=1;
+            request.getSession().setAttribute("flag",flag);
             /* 跳转到生成题目页面*/
             LoginCheck(request,response);
         }else if (state.equals("register")){

@@ -11,4 +11,6 @@ public class WebContents {
     public static final String REGISTER ="views/register.jsp";
     public static final String SNO ="views/studentScore.jsp";
     public static final String ALL ="views/allScore.jsp";
+    public static final String STARTDO = "views/doAlgoShow.jsp";
+    public static final String DOALGOBYPAGE ="views/doAlgoPage.jsp" ;
 }

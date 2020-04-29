@@ -84,6 +84,19 @@ public class UploadTitleServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        else if (state.equals("begin4")) {
+            Date day=new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String nowDate = df.format(day);
+            HttpSession session=request.getSession();
+            session.setAttribute("nowDate1",nowDate);
+            /* 开始运算，分页显示题目*/
+            try {
+                downloadFile3(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         else if (state.equals("begin2")){
             /* 一次显示一道题目，第一道往后的运算*/
             try {
@@ -95,6 +108,15 @@ public class UploadTitleServlet extends HttpServlet {
             }
         }
 
+    }
+
+    private void downloadFile3(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session=request.getSession();
+        RequestDispatcher rd = null;
+        rd = request.getRequestDispatcher(WebContents.DOALGOBYPAGE);
+        request.setAttribute("list",session.getAttribute("list"));
+        request.setAttribute("count",session.getAttribute("count"));
+        rd.forward(request, response);
     }
 
 
@@ -338,7 +360,7 @@ public class UploadTitleServlet extends HttpServlet {
         }else{
 
 
-
+            //计算做题的用时
             Date day=new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String strTime = df.format(day);
@@ -400,9 +422,9 @@ public class UploadTitleServlet extends HttpServlet {
         for (int i = 1;i<=count;i++){
             j=i+0.1;
             q=i+0.2;
-            String s = request.getParameter(String.valueOf(j));
+            String s = request.getParameter(String.valueOf(j));//获取题的字符串
             System.out.print(s);
-            int s1 = Integer.parseInt(request.getParameter(String.valueOf(q)));
+            int s1 = Integer.parseInt(request.getParameter(String.valueOf(q)));//获取对应题目的答案
             System.out.print(s1);
             int result = doCalculate(s);
             System.out.print(result);
@@ -461,7 +483,7 @@ public class UploadTitleServlet extends HttpServlet {
      * @throws ScriptException
      */
     private int doCalculate(String str) throws ScriptException {
-        String s= str.replace('÷','/');//将出号转化为程序可识别的除号
+        String s= str.replace('÷','/');//将除号转化为程序可识别的除号
         ScriptEngine jse = new ScriptEngineManager().getEngineByName("JavaScript");
         String hush = String.valueOf(jse.eval(s));
         double temp = Double.parseDouble(hush);
